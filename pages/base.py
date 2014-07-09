@@ -176,6 +176,8 @@ class BasePage(Page):
             web_platform_menu = self.selenium.find_element(*self._web_platform_menu_locator)
             ActionChains(self.selenium).move_to_element(web_platform_menu).perform()
             WebDriverWait(self.selenium, self.timeout).until(lambda s: self.is_web_platform_submenu_displayed)
+            first_menu_item = self.selenium.find_element(*self.web_platform_links_list[0].get('locator'))
+            ActionChains(self.selenium).move_to_element(first_menu_item).perform()
 
         @property
         def is_zones_submenu_displayed(self):
@@ -185,6 +187,8 @@ class BasePage(Page):
             zones_menu = self.selenium.find_element(*self._zones_menu_locator)
             ActionChains(self.selenium).move_to_element(zones_menu).perform()
             WebDriverWait(self.selenium, self.timeout).until(lambda s: self.is_zones_submenu_displayed)
+            first_menu_item = self.selenium.find_element(*self.zones_links_list[0].get('locator'))
+            ActionChains(self.selenium).move_to_element(first_menu_item).perform()
 
         @property
         def is_sign_out_visible(self):
